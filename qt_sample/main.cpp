@@ -48,8 +48,43 @@ int main(int argc, char *argv[])
     //Notepad w;
     //w.show();
 
+
+    QWidget wgt;
+
+    QLabel label(&wgt);
+    label.setText("<p>Label <b style='color:red'>1</b> </p>");
+
+
+    QPushButton btn1(&wgt);
+    btn1.move(100, 0);
+    btn1.setText("&BUTTON");
+
+    QWidget* pwgt1 = new QWidget(&wgt);
+    QPalette pal1;
+    pal1.setColor(pwgt1->backgroundRole(), Qt::blue);
+    pwgt1->setPalette(pal1);
+    pwgt1->resize(100, 100);
+    pwgt1->move(25, 25);
+    pwgt1->setAutoFillBackground(true);
+
+    QWidget* pwgt2 = new QWidget(&wgt);
+    QPalette pal2;
+    pal2.setBrush(pwgt1->backgroundRole(), QBrush(QPixmap(":/stone.jpg")));
+    pwgt2->setPalette(pal2);
+    pwgt2->setCursor(QCursor(QPixmap(":/cursor")));
+    pwgt2->resize(100, 100);
+    pwgt2->move(75, 75);
+    pwgt2->setAutoFillBackground(true);
+
+    wgt.resize(200, 200);
+    wgt.show();
+
+
+
+    /*
     QLabel label("0");
     QPushButton cmd("ADD");
+    cmd.setGeometry(10, 10, 300, 200);
     Counter* counter = new Counter();
 
     Node* node = new Node();
@@ -69,5 +104,6 @@ int main(int argc, char *argv[])
     QObject::connect(counter, SIGNAL(onChange(int)), &label, SLOT(setNum(int)));
     QObject::connect(counter, SIGNAL(full()), &app, SLOT(quit()));
 
+    */
     return app.exec();
 }

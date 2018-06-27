@@ -36,3 +36,6 @@ HEADERS += \
 
 FORMS += \
         notepad.ui
+
+RESOURCES += \
+    resources.qrc
